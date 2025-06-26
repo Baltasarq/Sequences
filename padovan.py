@@ -19,11 +19,11 @@ def padovan_seq(n: int) -> list[int]:
 
     if n > 0:
         match n:
-            case 0:
-                toret = [1]
             case 1:
-                toret = [1, 1]
+                toret = [1]
             case 2:
+                toret = [1, 1]
+            case 3:
                 toret = [1, 1, 1]
             case _:
                 toret = padovan_seq(n - 1)
@@ -34,7 +34,36 @@ def padovan_seq(n: int) -> list[int]:
 ...
 
 
+def padovan_seq_it(n: int) -> list[int]:
+    """This is an iterative version of padova_seq()."""
+    toret = []
+
+    if n > 0:
+        match n:
+            case 1:
+                toret = [1]
+            case 2:
+                toret = [1, 1]
+            case 3:
+                toret = [1, 1, 1]
+            case _:
+                toret = [1, 1, 1]
+                sum0 = 1
+                sum1 = 1
+
+                while len(toret) < n:
+                    toret.append(sum0 + sum1)
+                    sum0 = toret[-3]
+                    sum1 = toret[-2]
+                ...
+        ...
+    ...
+
+    return toret
+...
+
+
 if __name__ == "__main__":
     print("Padovan sequence")
-    print(str.join(", ", (str(x) for x in padovan_seq(20))))
+    print(str.join(", ", (str(x) for x in padovan_seq_it(20))))
 ...
