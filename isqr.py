@@ -2,9 +2,10 @@
 
 
 import math
+from typing import Generator
 
 
-def isqr_seq(n: int) -> list[int]:
+def isqr_seq(n: int) -> Generator[int]:
     """
         isqr sequence.
         Defined as
@@ -15,7 +16,7 @@ def isqr_seq(n: int) -> list[int]:
         :param n: The number of elements to generate.
         :return: A list with the sequence up to n.
     """
-    return [int(math.sqrt(x)) for x in range(n + 1)]
+    return (int(math.sqrt(x)) for x in range(n + 1))
 ...
 
 
